@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import heroImg from '../../assets/images/hero/hero1.png';
 
 const Hero = () => {
@@ -61,11 +62,13 @@ const Hero = () => {
             Made with real ingredients, crafted with love. Taste the joy in every single scoop.
           </motion.p>
           
-          <motion.button variants={itemVariants} className="group relative overflow-hidden bg-pink-600 text-white px-10 py-4 rounded-full hover:bg-pink-700 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-pink-500/30">
-            <span className="relative z-10 font-bold tracking-widest text-sm uppercase flex items-center gap-2">
-              Explore Flavours <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
-            </span>
-          </motion.button>
+          <motion.div variants={itemVariants}>
+            <Link to="/flavours" className="inline-block group relative overflow-hidden bg-pink-600 text-white px-10 py-4 rounded-full hover:bg-pink-700 hover:-translate-y-1 transition-all duration-300 shadow-xl shadow-pink-500/30">
+              <span className="relative z-10 font-bold tracking-widest text-sm uppercase flex items-center gap-2">
+                Explore Flavours <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
+              </span>
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Right: Large Image (hero.jpg) */}

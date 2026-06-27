@@ -122,15 +122,7 @@ const Footer = () => {
                 Zomato
                 <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
               </a>
-              <a 
-                href="https://www.bigbasket.com/pb/hyperscoop/?nc=hyperscoop" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between bg-white border border-[#689f38]/20 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold hover:bg-[#689f38] hover:text-white transition-all shadow-sm hover:shadow-[#689f38]/30 hover:-translate-y-1"
-              >
-                BigBasket
-                <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
-              </a>
+
               <a 
                 href="#" 
                 onClick={(e) => e.preventDefault()}

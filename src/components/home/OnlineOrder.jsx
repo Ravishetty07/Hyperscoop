@@ -21,7 +21,7 @@ const OnlineOrder = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             
             {/* Swiggy */}
             <motion.a 
@@ -69,28 +69,6 @@ const OnlineOrder = () => {
               <p className="text-slate-500 font-medium text-sm text-left w-full">Live tracking & quick delivery.</p>
             </motion.a>
 
-            {/* BigBasket */}
-            <motion.a 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, type: "spring", stiffness: 60 }}
-              href="https://www.bigbasket.com/pb/hyperscoop/?nc=hyperscoop" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center justify-center p-6 lg:p-8 bg-white rounded-[2.5rem] shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-b-4 border-transparent hover:border-[#84c225]"
-            >
-              <div className="w-full h-32 flex items-center justify-center mb-8 transition-transform duration-300 group-hover:scale-110">
-                <img src="https://i.pinimg.com/736x/b3/67/47/b36747eeba3353726923de417e969ace.jpg" alt="BigBasket" className="max-w-[200px] max-h-full object-contain rounded-2xl drop-shadow-md" />
-              </div>
-              <div className="w-full flex flex-wrap items-center justify-between mb-3 gap-2">
-                <span className="font-['Fredoka'] font-bold text-xl text-[#3d2314]">BigBasket</span>
-                <span className="inline-flex items-center gap-1 font-bold text-white bg-[#84c225] px-3 py-1.5 rounded-full text-xs shadow-sm transition-colors whitespace-nowrap">
-                  Order Now <span>→</span>
-                </span>
-              </div>
-              <p className="text-slate-500 font-medium text-sm text-left w-full">Add to your daily grocery delivery.</p>
-            </motion.a>
 
             {/* Rapido */}
             <motion.a 
