@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { IceCream, Leaf, Users, Star, History } from 'lucide-react';
 import aboutImg from '../assets/images/about/about-hero.jpg';
-import heroImg from '../assets/images/hero/kalajamun-hero.jpg';
+import heroImg from '../assets/images/hero/services-banner.jpg';
 
 const timelineEvents = [
   { year: 'Ancient Rome', text: 'Emperor Nero sent messengers for snow flavored with fruit and honey.', icon: History },
@@ -31,7 +31,7 @@ const About = () => {
       
       <main className="font-['Quicksand'] bg-[#fafafa] min-h-screen">
         {/* Vibrant Hero Section */}
-        <section className="relative pt-32 pb-32 overflow-hidden bg-gradient-to-br from-pink-500 to-orange-400">
+        <section className="relative pt-32 pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-pink-500 to-orange-400">
           <div className="absolute inset-0 z-0">
             <img src={heroImg} alt="Hyperscoop Premium" className="w-full h-full object-cover opacity-20 mix-blend-overlay" />
             <div className="absolute inset-0 bg-gradient-to-t from-pink-600/80 to-transparent"></div>
@@ -96,7 +96,7 @@ const About = () => {
                     style={{ y: yParallax }}
                     src={aboutImg} 
                     alt="Hyperscoop Ice Cream" 
-                    className="w-full h-[600px] object-cover scale-125 transform hover:scale-110 transition-transform duration-1000"
+                    className="w-full h-[400px] lg:h-[450px] object-cover scale-105 transform hover:scale-100 transition-transform duration-1000"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-pink-900/30 to-transparent z-20 pointer-events-none" />
                 </div>
