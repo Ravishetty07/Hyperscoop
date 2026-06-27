@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import heroImg from '../../assets/images/hero/hero.jpg';
+import heroImg from '../../assets/images/hero/hero1.png';
 
 const Hero = () => {
   const containerVariants = {
@@ -27,6 +27,15 @@ const Hero = () => {
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Soft radial glow behind image to help blending */}
         <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[500px] h-[500px] bg-white rounded-full blur-[100px] opacity-100"></div>
+      </div>
+
+      {/* Floating Sweet Icons */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        <motion.div animate={{ y: [0, -30, 0], rotate: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} className="absolute top-[15%] left-[8%] text-5xl md:text-6xl filter drop-shadow-xl opacity-80">🍦</motion.div>
+        <motion.div animate={{ y: [0, 30, 0], rotate: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }} className="absolute top-[65%] left-[5%] text-4xl md:text-5xl filter drop-shadow-xl opacity-70">🍧</motion.div>
+        <motion.div animate={{ y: [0, -20, 0], rotate: [0, 25, 0] }} transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 0.5 }} className="absolute top-[20%] right-[45%] text-5xl md:text-6xl filter drop-shadow-xl opacity-60">🍨</motion.div>
+        <motion.div animate={{ y: [0, 25, 0], rotate: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1.5 }} className="absolute bottom-[25%] right-[50%] text-4xl md:text-5xl filter drop-shadow-xl opacity-80">🍒</motion.div>
+        <motion.div animate={{ y: [0, -35, 0], rotate: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 2 }} className="absolute top-[10%] right-[10%] text-4xl md:text-5xl filter drop-shadow-xl opacity-70">🍓</motion.div>
       </div>
 
       {/* Main Hero Content */}
