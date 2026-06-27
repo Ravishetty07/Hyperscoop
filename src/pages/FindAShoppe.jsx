@@ -25,25 +25,35 @@ const FindAShoppe = () => {
         <meta name="description" content="Now in your neighborhood. Find a Hyperscoop parlour near you in Bengaluru." />
       </Helmet>
       
-      <section className="pt-32 pb-12 bg-pink-50 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-extrabold text-slate-800 mb-6"
-          >
-            Find a <span className="text-pink-500">Shoppe</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-slate-600 max-w-2xl mx-auto mb-10"
-          >
-            Now in your neighborhood. Discover the closest place to grab a fresh scoop.
-          </motion.p>
-        </div>
-      </section>
+      <main className="font-['Quicksand'] bg-[#fafafa] min-h-screen">
+        <section className="pt-32 pb-16 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjM2LDcyLDE1MywwLjAzKSIvPjwvc3ZnPg==')] opacity-60"></div>
+
+          <div className="container mx-auto px-4 md:px-6 relative z-10 text-center pt-8">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-6xl md:text-7xl lg:text-[5rem] font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm"
+            >
+              Find a <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Shoppe</span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto mb-12 leading-relaxed"
+            >
+              Now in your neighborhood. Discover the closest place to grab a fresh scoop.
+            </motion.p>
+          </div>
+
+          {/* Smooth bottom wave transitioning into the content section */}
+          <div className="absolute -bottom-[1px] left-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[40px] md:h-[80px]">
+              <path fill="#fafafa" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,61.48-3.66,135.18,17.58,205.84,35.95,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
+            </svg>
+          </div>
+        </section>
 
       <section className="py-12 bg-slate-50 min-h-[70vh]">
         <div className="container mx-auto px-4 md:px-6">
@@ -124,6 +134,7 @@ const FindAShoppe = () => {
           </div>
         </div>
       </section>
+      </main>
     </>
   );
 };
