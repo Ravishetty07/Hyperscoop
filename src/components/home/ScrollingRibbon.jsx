@@ -41,7 +41,7 @@ const ScrollingRibbon = () => {
         >
           {Array(10).fill().map((_, i) => (
             <React.Fragment key={i}>
-              <span className="mx-6">100% NATURAL</span>
+              <span className="mx-6">NATURAL & PREMIUM</span>
               <span className="mx-6 text-yellow-100">✦</span>
             </React.Fragment>
           ))}
