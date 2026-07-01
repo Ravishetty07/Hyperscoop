@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo/logo.png';
+import logoHyper from '../../assets/images/logo/logohyper.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -50,13 +51,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div className="md:col-span-1 flex flex-col items-start">
-            <Link to="/" className="mb-6 block transition-transform hover:scale-105">
-              <img src={logo} alt="Hyperscoop Logo" className="h-20 object-contain drop-shadow-sm mix-blend-multiply" />
+            <Link to="/" className="mb-6 block transition-transform hover:scale-105 flex items-center gap-3">
+              <img src={logoHyper} alt="Hyperscoop mark" className="h-12 w-auto" />
+              <img src={logo} alt="Hyperscoop Logo" className="h-14 object-contain drop-shadow-sm mix-blend-multiply" />
             </Link>
-            <p className="text-slate-600 font-medium leading-relaxed mb-4 text-sm md:text-base">
-              "Enjoy before it melts" <br />
-              <span className="italic mt-2 block opacity-80">Ever tasted ice cream so natural, so pure?</span>
-            </p>
           </div>
 
           {/* Quick Links */}
@@ -81,14 +79,15 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                +91 9606446504
+                <span className="text-slate-600 font-medium">
+                  <a href="tel:9845932734" className="hover:text-orange-500 transition-colors">9845932734</a> / 
+                  <a href="tel:9945191217" className="hover:text-orange-500 transition-colors">9945191217</a> / 
+                  <a href="tel:9899991133" className="hover:text-orange-500 transition-colors">9899991133</a>
+                </span>
               </li>
               <li className="flex items-start gap-2 pt-1">
                 <svg className="w-5 h-5 text-orange-400 mt-1 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 <div className="flex flex-col space-y-1">
-                  <a href="mailto:hyperscooppremium@gmail.com" className="hover:text-pink-600 transition-colors break-all">
-                    hyperscooppremium@gmail.com
-                  </a>
                   <a href="mailto:adlabsfoodproducts@gmail.com" className="hover:text-pink-600 transition-colors break-all">
                     adlabsfoodproducts@gmail.com
                   </a>
@@ -105,7 +104,7 @@ const Footer = () => {
             </p>
             <div className="grid grid-cols-2 gap-3">
               <a 
-                href="https://www.swiggy.com/city/bangalore/hyperscoop-beml-layout-rajarajeshwari-nagar-rest851566" 
+                href="https://www.swiggy.com/city/bangalore/hyperscoop-natural-and-premium-ice-creams-koramangala-neelasandra-rest376285" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between bg-white border border-[#fc8019]/20 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold hover:bg-[#fc8019] hover:text-white transition-all shadow-sm hover:shadow-[#fc8019]/30 hover:-translate-y-1"
@@ -114,7 +113,7 @@ const Footer = () => {
                 <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
               </a>
               <a 
-                href="https://www.zomato.com/bangalore/hyperscoop-icecream-rajarajeshwari-nagar-bangalore/info" 
+                href="https://www.zomato.com/bangalore/hyper-scoop-shanti-nagar-bangalore/order" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between bg-white border border-[#cb202d]/20 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold hover:bg-[#cb202d] hover:text-white transition-all shadow-sm hover:shadow-[#cb202d]/30 hover:-translate-y-1"
@@ -124,11 +123,12 @@ const Footer = () => {
               </a>
 
               <a 
-                href="#" 
-                onClick={(e) => e.preventDefault()}
-                className="group flex items-center justify-between bg-white border border-[#eab308]/20 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold hover:bg-[#eab308] hover:text-white transition-all shadow-sm hover:shadow-[#eab308]/30 hover:-translate-y-1"
+                href="https://wa.me/9899991133?text=Hello%20Hyperscoop!%20I%20would%20like%20to%20order%20some%20ice%20cream%20directly." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between bg-white border border-pink-500/20 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold hover:bg-pink-600 hover:text-white transition-all shadow-sm hover:shadow-pink-600/30 hover:-translate-y-1"
               >
-                Rapido
+                Direct Order
                 <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
               </a>
             </div>
@@ -136,9 +136,12 @@ const Footer = () => {
         </div>
 
         {/* Copyright Bar */}
-        <div className="border-t border-pink-200 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 font-bold text-sm">
+        <div className="border-t border-pink-200 pt-8 flex flex-col gap-3 md:flex-row md:items-center justify-between text-slate-500 font-bold text-sm">
           <p className="mb-4 md:mb-0">
             &copy; {currentYear} Adlabs Food Products. All rights reserved.
+          </p>
+          <p className="text-slate-400 text-xs md:text-sm max-w-2xl">
+            All images, videos, and content on this site are owned by Adlabs Food Products and may not be copied or used without permission.
           </p>
           <p className="flex items-center gap-2">
             Thanks for visiting us <span className="text-xl">🍦</span>

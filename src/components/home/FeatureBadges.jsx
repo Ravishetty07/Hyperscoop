@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { Leaf, Heart, ShieldCheck, Zap } from 'lucide-react';
 
 const badges = [
-  { icon: Leaf, text: '100% Vegetarian', color: 'text-green-600', bg: 'bg-green-100', border: 'border-green-200' },
-  { icon: Heart, text: 'Crafted with Love', color: 'text-pink-600', bg: 'bg-pink-100', border: 'border-pink-200' },
-  { icon: ShieldCheck, text: 'No Artificial Flavors', color: 'text-purple-600', bg: 'bg-purple-100', border: 'border-purple-200' },
-  { icon: Zap, text: 'Fresh & Creamy', color: 'text-orange-500', bg: 'bg-orange-100', border: 'border-orange-200' },
+  { icon: Leaf, text: '100% Vegetarian', subtext: 'Real Ingredients', color: 'text-green-600', bg: 'bg-green-100', border: 'border-green-200' },
+  { icon: Heart, text: 'Crafted with Love', subtext: 'Real Ingredients', color: 'text-pink-600', bg: 'bg-pink-100', border: 'border-pink-200' },
+  { icon: ShieldCheck, text: '100% Milk-Based Ice Cream', subtext: 'Real Ingredients', color: 'text-purple-600', bg: 'bg-purple-100', border: 'border-purple-200' },
+  { icon: Zap, text: 'Fresh & Creamy', subtext: 'Real Ingredients', color: 'text-orange-500', bg: 'bg-orange-100', border: 'border-orange-200' },
 ];
 
 const FeatureBadges = () => {
@@ -31,7 +31,7 @@ const FeatureBadges = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="font-bold text-slate-800 text-sm md:text-base">{badge.text}</span>
-                  <span className="text-xs text-slate-500 font-medium">Real Ingredients</span>
+                  <span className="text-xs text-slate-500 font-medium">{badge.subtext}</span>
                 </div>
               </motion.div>
             );

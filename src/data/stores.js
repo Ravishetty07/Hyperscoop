@@ -3,25 +3,13 @@ export const stores = [
     id: 1,
     name: "Adlabs Food Products (Hyperscoop)",
     address: "6/1B, 14th Cross Rd, next to PSS Motors, Anepalya, Neelasandra, Bangalore – 560030",
-    phone: "9845932734 / 9902755155"
-  },
-  {
-    id: 2,
-    name: "Hyperscoop",
-    address: "G. R Arcade, 2092, 5th Main, 9th Cross Rd, Hampi Nagar, RPC Layout, Bengaluru, Karnataka 560040",
-    phone: "9945191217"
+    phone: "9845932734 / 9899991133"
   },
   {
     id: 3,
     name: "Hyperscoop",
     address: "Catholic Club 22, Museum Rd, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560025",
-    phone: "9902755155"
-  },
-  {
-    id: 4,
-    name: "Hyperscoop Malleshwaram",
-    address: "No. 4, 35/1, 8th Main Rd, 16th Cross, Malleshwaram, Bengaluru – 560055",
-    phone: "9019136685"
+    phone: "9899991133"
   },
   {
     id: 5,
@@ -37,8 +25,8 @@ export const stores = [
   },
   {
     id: 7,
-    name: "White Mountain",
-    address: "No. 8, Kukke Plaza Road, below McDonald's, DLF Newtown, Akshayanagar, Bengaluru, Karnataka 560076",
-    phone: "6362430091"
-  }
+    name: "Hyperscoop – Siddaveerappa Badavane",
+    address: "BIET College Road, next to Medplus Pharmacy (near the More building), Siddaveerappa Badavane, Davangere, Karnataka",
+    phone: "9899991133"
+  },
 ];

@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, IceCream } from 'lucide-react';
 import logoImg from '../../assets/images/logo/logo.png';
+import logoHyper from '../../assets/images/logo/logohyper.png';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -66,9 +67,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-2 group relative z-50">
-            <motion.div whileHover={{ scale: 1.1, rotate: 10 }} transition={{ type: "spring" }}>
-              <img src={logoImg} alt="Hyperscoop Logo" className="h-11 w-auto drop-shadow-sm" />
+          <NavLink to="/" className="flex items-center gap-3 group relative z-50">
+            <motion.div whileHover={{ scale: 1.05, rotate: 8 }} transition={{ type: "spring" }} className="flex items-center gap-3">
+              <img src={logoHyper} alt="Hyperscoop mark" className="h-12 w-auto" />
+              <img src={logoImg} alt="Hyperscoop Logo" className="h-12 w-auto drop-shadow-sm" />
             </motion.div>
           </NavLink>
 

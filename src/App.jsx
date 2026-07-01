@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { flavours } from './data/flavours';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
@@ -41,8 +42,26 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  useEffect(() => {
+    const cachedImages = flavours.all.map((flavour) => {
+      const img = new Image();
+      img.src = flavour.image;
+      img.decoding = 'async';
+      return img;
+    });
+
+    return () => {
+      cachedImages.length = 0;
+    };
+  }, []);
+
   return (
     <HelmetProvider>
+      <Helmet>
+        {flavours.all.map((flavour) => (
+          <link key={flavour.id} rel="preload" as="image" href={flavour.image} />
+        ))}
+      </Helmet>
       <Preloader />
       <Router>
         <div className="flex flex-col min-h-screen bg-[#fafafa]">

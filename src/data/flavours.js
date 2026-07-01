@@ -1,69 +1,35 @@
-import tenderCoconut from '../assets/images/flavours/natural/tender-coconut.jpg';
-import dryFruits from '../assets/images/flavours/natural/dry-fruits.jpg';
-import figOHoney from '../assets/images/flavours/natural/fig-o-honey.jpg';
-import guava from '../assets/images/flavours/natural/guava.jpg';
-import mango from '../assets/images/flavours/natural/mango.jpg';
-import custardApple from '../assets/images/flavours/natural/custard-apple.jpg';
-import jackfruit from '../assets/images/flavours/natural/jackfruit.jpg';
-
-// Premium Images
-import badamKulfi from '../assets/images/flavours/premium/badam-kulfi.png';
-import belgiumChocolate from '../assets/images/flavours/premium/Belgium Chocolate Scoop.jpg';
-import spanishDelight from '../assets/images/flavours/premium/spanish-delight.png';
-import blackCurrant from '../assets/images/flavours/premium/Black Current.jpg';
-import strawberryCheesecake from '../assets/images/flavours/premium/Strawberry Cheesecake.jpg';
-import butterscotch from '../assets/images/flavours/premium/butterscotch.png';
-import chocolate from '../assets/images/flavours/premium/Chocolate.jpg';
-import chocoChips from '../assets/images/flavours/premium/choco-chips.png';
-import redVelvet from '../assets/images/flavours/premium/Red Velvet.jpg';
-import strawberry from '../assets/images/flavours/premium/strawberry.png';
-import oreo from '../assets/images/flavours/premium/oreo.png';
-import vanilla from '../assets/images/flavours/premium/vanilla.png';
-import saltedCaramel from '../assets/images/flavours/premium/salted-caramel.png';
-import mocha from '../assets/images/flavours/premium/mocha.jpg';
-import choconut from '../assets/images/flavours/premium/choconut.jpg';
-
-// New Premium Additions
-import bourbonWhiskey from '../assets/images/flavours/premium/Bourbon Whiskey [non alcoholic].jpg';
-import cakeAndFudge from '../assets/images/flavours/premium/Cake & Fudge.jpg';
-import dryFruitDelight from '../assets/images/flavours/premium/Dry Fruit Delight.jpg';
-import pista from '../assets/images/flavours/premium/Pista.jpg';
-import tiramisu from '../assets/images/flavours/premium/Tiramisu.jpg';
-import tuityFruity from '../assets/images/flavours/premium/Tuity Fruity.jpg';
-import vanillaSugarfree from '../assets/images/flavours/premium/Vanilla Sugarfree Ice Cream.jpg';
+import dsc8166Edit from '../assets/images/flavours/all/_DSC8166-Edit.jpg';
+import dsc8482 from '../assets/images/flavours/all/_DSC8482.jpg';
+import dsc8641 from '../assets/images/flavours/all/_DSC8641.jpg';
+import dsc8653 from '../assets/images/flavours/all/_DSC8653.jpg';
+import dsc8700 from '../assets/images/flavours/all/_DSC8700.jpg';
+import dsc8825 from '../assets/images/flavours/all/_DSC8825.jpg';
+import dsc8852 from '../assets/images/flavours/all/_DSC8852.jpg';
+import dsc8871 from '../assets/images/flavours/all/_DSC8871.jpg';
+import dsc8934Edit from '../assets/images/flavours/all/_DSC8934-Edit.jpg';
+import dsc8956Edit from '../assets/images/flavours/all/_DSC8956-Edit.jpg';
+import dsc9134Edit from '../assets/images/flavours/all/_DSC9134-Edit.jpg';
+import dsc9243 from '../assets/images/flavours/all/_DSC9243.jpg';
+import dsc9267 from '../assets/images/flavours/all/_DSC9267.jpg';
+import dsc9301 from '../assets/images/flavours/all/_DSC9301.jpg';
+import dsc9347 from '../assets/images/flavours/all/_DSC9347.jpg';
 
 export const flavours = {
-  natural: [
-    { id: 'n1', name: 'Tender Coconut', image: tenderCoconut, tagline: 'Fresh and refreshing.' },
-    { id: 'n2', name: 'Dry Fruits', image: dryFruits, tagline: 'A nutty delight.' },
-    { id: 'n3', name: 'Fig O Honey', image: figOHoney, tagline: 'Naturally sweet and rich.' },
-    { id: 'n4', name: 'Guava', image: guava, tagline: 'Tropical and tangy.' },
-    { id: 'n5', name: 'Mango', image: mango, tagline: 'The king of fruits.' },
-    { id: 'n6', name: 'Custard Apple', image: custardApple, tagline: 'Creamy and sweet.' },
-    { id: 'n7', name: 'Jackfruit', image: jackfruit, tagline: 'Exotic and flavorful.' },
-  ],
-  premium: [
-    { id: 'p1', name: 'Badam Kulfi', image: badamKulfi, tagline: 'Traditional richness.' },
-    { id: 'p2', name: 'Belgium Chocolate', image: belgiumChocolate, tagline: 'Deep, dark, and decadent.' },
-    { id: 'p3', name: 'Spanish Delight', image: spanishDelight, tagline: 'A delightful European treat.' },
-    { id: 'p4', name: 'Black Currant', image: blackCurrant, tagline: 'Sweet, tart, and vibrant.' },
-    { id: 'p5', name: 'Strawberry Cheesecake', image: strawberryCheesecake, tagline: 'A dessert in a scoop.' },
-    { id: 'p6', name: 'Butterscotch', image: butterscotch, tagline: 'Crunchy caramelized goodness.' },
-    { id: 'p7', name: 'Chocolate', image: chocolate, tagline: 'Classic and irresistible.' },
-    { id: 'p8', name: 'Choco Chips', image: chocoChips, tagline: 'Crunchy chocolate bursts.' },
-    { id: 'p9', name: 'Red Velvet', image: redVelvet, tagline: 'Rich and velvety smooth.' },
-    { id: 'p10', name: 'Strawberry', image: strawberry, tagline: 'Sweet and fruity.' },
-    { id: 'p11', name: 'Oreo', image: oreo, tagline: 'Cookies and cream perfection.' },
-    { id: 'p12', name: 'Vanilla', image: vanilla, tagline: 'Pure and simple joy.' },
-    { id: 'p13', name: 'Salted Caramel', image: saltedCaramel, tagline: 'Sweet meets salty.' },
-    { id: 'p14', name: 'Mocha', image: mocha, tagline: 'Coffee and chocolate fusion.' },
-    { id: 'p15', name: 'Choconut', image: choconut, tagline: 'Chocolate and coconut harmony.' },
-    { id: 'p16', name: 'Bourbon Whiskey', image: bourbonWhiskey, tagline: 'Rich non-alcoholic treat.' },
-    { id: 'p17', name: 'Cake & Fudge', image: cakeAndFudge, tagline: 'Decadent bakery fusion.' },
-    { id: 'p18', name: 'Dry Fruit Delight', image: dryFruitDelight, tagline: 'Premium nutty goodness.' },
-    { id: 'p19', name: 'Pista', image: pista, tagline: 'Classic pistachio perfection.' },
-    { id: 'p20', name: 'Tiramisu', image: tiramisu, tagline: 'Italian coffee dessert.' },
-    { id: 'p21', name: 'Tuity Fruity', image: tuityFruity, tagline: 'Colorful fruit explosion.' },
-    { id: 'p22', name: 'Vanilla Sugarfree', image: vanillaSugarfree, tagline: 'Guilt-free classic joy.' },
+  all: [
+    { id: 'f1', name: 'Mango Cream', tagline: 'Pure mango pulp blended with fresh cream.', image: dsc8166Edit, color: 'pink' },
+    { id: 'f2', name: 'Chocolate Dream', tagline: 'Rich, creamy chocolate made with imported cocoa.', image: dsc8482, color: 'amber' },
+    { id: 'f3', name: 'Berry Bliss', tagline: 'Tart and sweet berry swirls with smooth cream.', image: dsc8641, color: 'pink' },
+    { id: 'f4', name: 'Coconut Crunch', tagline: 'Tropical coconut flakes in silky cream.', image: dsc8653, color: 'green' },
+    { id: 'f5', name: 'Salted Caramel', tagline: 'Sweet caramel with the perfect hint of sea salt.', image: dsc8700, color: 'amber' },
+    { id: 'f6', name: 'Pista Paradise', tagline: 'Nutty pistachio with a smooth, creamy finish.', image: dsc8825, color: 'green' },
+    { id: 'f7', name: 'Vanilla Bean', tagline: 'Classic vanilla with a rich, creamy texture.', image: dsc8852, color: 'pink' },
+    { id: 'f8', name: 'Oreo Delight', tagline: 'Crunchy Oreo chunks folded into creamy goodness.', image: dsc8871, color: 'amber' },
+    { id: 'f9', name: 'Strawberry Swirl', tagline: 'Juicy strawberry ribbons in fresh cream.', image: dsc8934Edit, color: 'pink' },
+    { id: 'f10', name: 'Rose Petal', tagline: 'Delicate rose flavor with sweet cream notes.', image: dsc8956Edit, color: 'green' },
+    { id: 'f11', name: 'Hazelnut Heaven', tagline: 'Buttery hazelnut swirled into smooth ice cream.', image: dsc9134Edit, color: 'amber' },
+    { id: 'f12', name: 'Classic Bliss', tagline: 'A timeless blend of premium cream and sweet balance.', image: dsc9243, color: 'pink' },
+    { id: 'f13', name: 'Creamy Nut', tagline: 'A nut-forward treat with rich, smooth texture.', image: dsc9267, color: 'green' },
+    { id: 'f14', name: 'Golden Scoop', tagline: 'A bright, indulgent flavor with creamy richness.', image: dsc9301, color: 'amber' },
+    { id: 'f15', name: 'Signature Sundae', tagline: 'A premium scoop topped with delightful flavor notes.', image: dsc9347, color: 'pink' },
   ]
 };

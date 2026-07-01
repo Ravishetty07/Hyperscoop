@@ -1,23 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'framer-motion';
 import { flavours } from '../data/flavours';
-import CategoryTabs from '../components/flavours/CategoryTabs';
 import FlavourCard from '../components/flavours/FlavourCard';
+import ImageLightbox from '../components/ImageLightbox';
 
 const Flavours = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
   const gridRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  const allFlavours = [
-    ...flavours.natural.map(f => ({ ...f, category: 'natural' })),
-    ...flavours.premium.map(f => ({ ...f, category: 'premium' }))
-  ];
-
-  const displayedFlavours = activeCategory === 'all' 
-    ? allFlavours 
-    : allFlavours.filter(f => f.category === activeCategory);
+  const displayedFlavours = flavours.all;
 
   const handleMouseMove = (e) => {
     if (!gridRef.current) return;
@@ -35,32 +27,28 @@ const Flavours = () => {
   return (
     <>
       <Helmet>
-        <title>Our Flavours | Hyperscoop</title>
-        <meta name="description" content="Explore our wide range of 100% natural and premium vegetarian ice cream flavours." />
+        <title>All Flavours | Hyperscoop</title>
+        <meta name="description" content="Explore all our delicious ice cream flavours." />
       </Helmet>
       
-      <main className="font-['Quicksand'] bg-[#fafafa] min-h-screen">
+      <main className="font-['Quicksand'] min-h-screen"
+        style={{
+          background: 'linear-gradient(135deg, #2C1B04 0%, #392306 35%, #49310A 70%, #51330F 100%)',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
         <section className="pt-32 pb-16 bg-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjM2LDcyLDE1MywwLjAzKSIvPjwvc3ZnPg==')] opacity-60"></div>
           
           <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-6xl md:text-7xl lg:text-[5rem] font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm"
-            >
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Flavours</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto mb-12 leading-relaxed"
-            >
+            <h1 className="text-6xl md:text-7xl lg:text-[5rem] font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm">
+              All <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Flavours</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
               Discover our carefully crafted, 100% vegetarian ice creams made with fresh, handpicked ingredients.
-            </motion.p>
-            
-            <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+            </p>
           </div>
 
           {/* Smooth bottom wave transitioning into the grid section */}
@@ -88,26 +76,30 @@ const Flavours = () => {
                 }}
               />
 
-              <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-10 relative z-10">
-                <AnimatePresence mode="popLayout">
-                  {displayedFlavours.map((flavour, index) => (
-                    <FlavourCard 
-                      key={flavour.id} 
-                      flavour={flavour} 
-                      category={flavour.category} 
-                      index={index} 
-                    />
-                  ))}
-                </AnimatePresence>
-              </motion.div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-10 relative z-10">
+                {displayedFlavours.map((flavour, index) => (
+                  <FlavourCard 
+                    key={flavour.id} 
+                    flavour={flavour} 
+                    onOpen={() => setLightboxIndex(index)}
+                  />
+                ))}
+              </div>
             </div>
             
             {displayedFlavours.length === 0 && (
               <div className="text-center py-20 text-slate-500 font-medium text-lg">
-                No flavours found in this category.
+                No flavours found.
               </div>
             )}
           </div>
+          {lightboxIndex !== null && (
+            <ImageLightbox
+              slides={displayedFlavours}
+              initialIndex={lightboxIndex}
+              onClose={() => setLightboxIndex(null)}
+            />
+          )}
         </section>
       </main>
     </>

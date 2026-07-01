@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import heroImg from '../../assets/images/hero/hero1.png';
+import heroVideo from '../../assets/video/mix sundaes.mp4';
 
 const Hero = () => {
+  const videoRef = useRef(null);
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -20,6 +22,36 @@ const Hero = () => {
       transition: { duration: 0.8, ease: "easeOut" },
     },
   };
+
+  // Attempt to unmute video after it starts playing
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const attemptUnmute = () => {
+      video.muted = false;
+      video.play().catch(() => {});
+    };
+
+    // Try to unmute after a short delay
+    const timer = setTimeout(attemptUnmute, 500);
+    
+    // Also try on user interaction
+    const handleInteraction = () => {
+      attemptUnmute();
+      document.removeEventListener('click', handleInteraction);
+      document.removeEventListener('touchstart', handleInteraction);
+    };
+    
+    document.addEventListener('click', handleInteraction);
+    document.addEventListener('touchstart', handleInteraction);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleInteraction);
+      document.removeEventListener('touchstart', handleInteraction);
+    };
+  }, []);
 
   return (
     <section className="relative min-h-[90vh] bg-[#fafafa] overflow-hidden flex flex-col font-['Inter'] pt-12 md:pt-20">
@@ -49,8 +81,8 @@ const Hero = () => {
           animate="visible"
           className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left z-20"
         >
-          <motion.span variants={itemVariants} className="inline-flex items-center gap-2 mb-6 text-[#dca120] font-bold tracking-widest text-xs md:text-sm uppercase bg-yellow-50 px-5 py-2 rounded-full shadow-sm border border-yellow-100">
-            ✨ 100% Vegetarian & Natural
+          <motion.span variants={itemVariants} className="inline-flex items-center gap-2 mb-6 text-white font-bold tracking-widest text-xs md:text-sm uppercase bg-gradient-to-r from-green-600 to-emerald-500 px-5 py-2.5 rounded-full shadow-lg shadow-green-600/20 border border-green-400/50">
+            100% Vegetarian
           </motion.span>
           
           <motion.h1 variants={itemVariants} className="font-['Playfair_Display'] text-5xl md:text-6xl lg:text-[5.5rem] text-[#2d1b2e] leading-[1.1] font-extrabold mb-6">
@@ -86,10 +118,15 @@ const Hero = () => {
             {/* Premium Golden Frame Container */}
             <div className="relative p-3 bg-white/40 backdrop-blur-sm rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border-2 border-white/60">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#dca120]/30 to-transparent rounded-[3rem] -z-10" />
-              <div className="rounded-[2.5rem] overflow-hidden border-4 border-white bg-white">
-                <img 
-                  src={heroImg} 
-                  alt="Premium Ice Cream" 
+              <div className="rounded-[2.5rem] overflow-hidden border-4 border-white bg-white relative">
+                <video
+                  ref={videoRef}
+                  src={heroVideo}
+                  autoPlay
+                  muted={true}
+                  loop
+                  playsInline
+                  preload="auto"
                   className="w-full max-w-[500px] object-cover scale-105 hover:scale-100 transition-transform duration-700"
                 />
               </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PartyPopper, Cake, Heart, Store, Truck, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logoHyper from '../../assets/images/logo/logohyper.png';
+import brandLogo from '../../assets/images/logo/image-removebg-preview (1).png';
 
 const EventsAndDealers = () => {
   return (
@@ -18,9 +20,11 @@ const EventsAndDealers = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-['Fredoka'] text-slate-800 mb-4"
+            className="text-4xl md:text-6xl font-['Fredoka'] text-slate-800 mb-4 flex items-center justify-center gap-3"
           >
-            Partner With <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Hyperscoop</span>
+            Partner With
+            <img src={logoHyper} alt="Hyperscoop mark" className="inline-block h-16 w-auto" />
+            <img src={brandLogo} alt="Hyperscoop logo" className="inline-block h-16 md:h-20 w-auto" />
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +63,7 @@ const EventsAndDealers = () => {
 
               <h3 className="text-3xl font-['Fredoka'] text-slate-800 mb-4">Bulk Orders & Events</h3>
               <p className="text-slate-600 text-lg mb-8 font-medium leading-relaxed">
-                Make your <strong>Marriages, Birthday Parties, and Corporate Events</strong> unforgettable with our 100% natural, vegetarian ice creams. We offer customized bulk catering packages with premium service.
+                Make your <strong>Marriages, Birthday Parties, and Corporate Events</strong> unforgettable with our 100% vegetarian ice creams. We offer customized bulk catering packages with premium service.
               </p>
 
               <ul className="space-y-3 mb-8">

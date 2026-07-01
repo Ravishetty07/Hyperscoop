@@ -17,13 +17,6 @@ const Franchise = () => {
     setTimeout(() => setIsSuccess(false), 5000);
   };
 
-  const investmentStats = [
-    { label: "Franchise Fee", value: "₹5 Lakhs", icon: IndianRupee, color: "text-blue-500", bg: "bg-blue-50" },
-    { label: "Total Investment Range", value: "₹15L - ₹20L", icon: TrendingUp, color: "text-pink-500", bg: "bg-pink-50" },
-    { label: "Carpet Area Required", value: "300 - 500 Sq.Ft.", icon: Map, color: "text-green-500", bg: "bg-green-50" },
-    { label: "Estimated Payback", value: "14 - 18 Months", icon: Clock, color: "text-amber-500", bg: "bg-amber-50" },
-  ];
-
   const benefits = [
     { title: "Zero Additives", desc: "A clean label brand appealing to the massive health-conscious demographic." },
     { title: "End-to-End Support", desc: "We assist with store setup, staff training, and initial marketing pushes." },
@@ -38,6 +31,14 @@ const Franchise = () => {
         <meta name="description" content="Partner with Hyperscoop and start your own natural ice cream parlour." />
       </Helmet>
       
+      <main className="font-['Quicksand'] min-h-screen"
+        style={{
+          background: 'linear-gradient(135deg, #2C1B04 0%, #392306 35%, #49310A 70%, #51330F 100%)',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-pink-50 to-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pink-100 rounded-full blur-[100px] opacity-60 -z-10"></div>
@@ -62,39 +63,38 @@ const Franchise = () => {
         </div>
       </section>
 
-      {/* Investment Panel (Indicative) */}
+      {/* Brand Momentum Section */}
       <section className="py-16 md:py-24 bg-white relative z-20 -mt-10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">Investment at a Glance</h2>
-              <div className="inline-block bg-amber-100 text-amber-800 px-4 py-2 rounded-lg text-sm font-semibold">
-                Note: These are indicative sample figures for layout purposes. Final numbers to be confirmed by Hyperscoop.
-              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">A Scoop Worth Talking About</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                No dry numbers here — just the kind of bold, craveable energy you see from the top ice cream names, now distilled into Hyperscoop’s premium, fresh, and highly memorable parlour experience.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {investmentStats.map((stat, i) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, type: "spring" }}
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all group relative overflow-hidden"
-                  >
-                    <div className={`absolute top-0 right-0 w-24 h-24 rounded-bl-full opacity-20 transition-transform group-hover:scale-110 ${stat.bg}`}></div>
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 relative z-10 ${stat.bg} ${stat.color}`}>
-                      <Icon size={24} strokeWidth={2} />
-                    </div>
-                    <p className="text-slate-500 font-medium text-sm mb-1">{stat.label}</p>
-                    <p className="text-2xl font-bold text-slate-800">{stat.value}</p>
-                  </motion.div>
-                );
-              })}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { title: 'High Footfall Appeal', text: 'A polished, Instagram-ready look with flavours that draw everyone in — from families to young trendsetters.', accent: 'from-pink-500 to-orange-400' },
+                { title: 'Built for Celebration', text: 'Perfect for parties, events, and local buzz — every store feels like a destination for joy.', accent: 'from-blue-500 to-purple-500' },
+                { title: 'Premium Store Experience', text: 'A clean, modern parlour design with easy ordering and memorable customer service.', accent: 'from-emerald-500 to-teal-500' },
+                { title: 'Flavor-First Strategy', text: 'Bold signature flavours and seasonal specials that keep customers coming back.', accent: 'from-fuchsia-500 to-pink-500' },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, type: 'spring' }}
+                  whileHover={{ y: -5 }}
+                  className="relative overflow-hidden rounded-[2rem] border border-slate-100 bg-slate-50 p-8 shadow-sm hover:shadow-xl transition-all"
+                >
+                  <div className={`absolute inset-x-0 top-0 h-2 bg-gradient-to-r ${item.accent}`} />
+                  <h3 className="text-2xl font-bold text-slate-900 mt-6 mb-3">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{item.text}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
@@ -196,17 +196,14 @@ const Franchise = () => {
                   {errors.city && <span className="text-red-400 text-xs mt-1 block">{errors.city.message}</span>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Investment Budget</label>
-                  <select 
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-900/50 border ${errors.budget ? 'border-red-500' : 'border-slate-600'} text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors`}
-                    {...register('budget', { required: 'Please select a budget range' })}
-                  >
-                    <option value="">Select a range...</option>
-                    <option value="10L-15L">₹10 Lakhs - ₹15 Lakhs</option>
-                    <option value="15L-20L">₹15 Lakhs - ₹20 Lakhs</option>
-                    <option value="20L+">Above ₹20 Lakhs</option>
-                  </select>
-                  {errors.budget && <span className="text-red-400 text-xs mt-1 block">{errors.budget.message}</span>}
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Target Location</label>
+                  <input 
+                    type="text" 
+                    className={`w-full px-4 py-3 rounded-xl bg-slate-900/50 border ${errors.location ? 'border-red-500' : 'border-slate-600'} text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors`}
+                    placeholder="Area, mall, or neighbourhood"
+                    {...register('location', { required: 'Target location is required' })}
+                  />
+                  {errors.location && <span className="text-red-400 text-xs mt-1 block">{errors.location.message}</span>}
                 </div>
               </div>
 
@@ -231,6 +228,7 @@ const Franchise = () => {
           </div>
         </div>
       </section>
+      </main>
     </>
   );
 };

@@ -1,27 +1,23 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { IceCream, Leaf, Users, Star, History } from 'lucide-react';
-import aboutImg from '../assets/images/about/about-hero.jpg';
-import heroImg from '../assets/images/hero/services-banner.jpg';
+import { motion } from 'framer-motion';
+import { IceCream, Leaf, Users, Star } from 'lucide-react';
+import bgImg from '../assets/images/about/bg images.jpeg';
+import logoHyper from '../assets/images/logo/logohyper.png';
+import brandLogo from '../assets/images/logo/image-removebg-preview (1).png';
+import clientsImg from '../assets/images/logo/clienysays.png';
+import TestimonialsVerticalFeed from '../components/TestimonialsVerticalFeed';
 
 const timelineEvents = [
-  { year: 'Ancient Rome', text: 'Emperor Nero sent messengers for snow flavored with fruit and honey.', icon: History },
-  { year: '13th Century', text: 'Marco Polo introduced a frozen-milk dessert from the Far East.', icon: History },
-  { year: '1500s', text: 'The term "ice cream" caught on in Italy.', icon: History },
-  { year: '1670', text: 'First public sale in Paris at Café Procope.', icon: History },
-  { year: '1776', text: 'First U.S. parlour opened in New York.', icon: History },
-  { year: '1948', text: 'Ice cream was first manufactured in India.', icon: History },
-  { year: '1984', text: 'The natural ice cream concept was founded.', icon: Leaf },
+  { year: '2016', text: 'Adlabs Food Products launched Hyperscoop in Bangalore, starting with a promise of premium vegetarian ice cream made from fresh milk and real fruit.', icon: IceCream },
+  { year: '2018', text: 'Our first parlour opened and quickly became a local favorite, thanks to clean service, attention to detail, and a menu designed for every palate.', icon: Leaf },
+  { year: '2020', text: 'We began supplying leading restaurants, caterers, and parlours in Bangalore, Chennai, Hyderabad, and Mysore with custom bulk orders.', icon: Users },
+  { year: '2022', text: 'Hyperscoop expanded its delivery network while keeping each scoop handcrafted, honest, and made from the finest ingredients.', icon: Star },
+  { year: '2024', text: 'Our sparkling clean facility and guest-first team helped turn first-time visitors into loyal regulars.', icon: IceCream },
+  { year: 'Today', text: 'Hyperscoop is more than ice cream — it is a trusted experience, creating memories for families, events, and neighbourhood ice cream lovers.', icon: Leaf },
 ];
 
-const fruits = ['Guava', 'Chikku', 'Musk Melon', 'Tender Coconut', 'Jackfruit', 'Watermelon', 'Mango', 'Strawberry', 'Custard Apple'];
-const classics = ['Vanilla', 'Chocolate', 'Butterscotch', 'Spanish Delight', 'Choco Vanilla', 'Rocky Road', 'Kesar Pista', 'Choco Chip', 'Kulfi'];
-
 const About = () => {
-  const { scrollYProgress } = useScroll();
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -100]);
-
   return (
     <>
       <Helmet>
@@ -29,145 +25,84 @@ const About = () => {
         <meta name="description" content="Share a scoop, Share a SMILE with our 100% natural, additive-free ice cream." />
       </Helmet>
       
-      <main className="font-['Quicksand'] bg-[#fafafa] min-h-screen">
-        {/* Vibrant Hero Section */}
-        <section className="relative pt-32 pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-pink-500 to-orange-400">
-          <div className="absolute inset-0 z-0">
-            <img src={heroImg} alt="Hyperscoop Premium" className="w-full h-full object-cover opacity-20 mix-blend-overlay" />
-            <div className="absolute inset-0 bg-gradient-to-t from-pink-600/80 to-transparent"></div>
+      <main className="font-['Quicksand'] min-h-screen"
+        style={{
+          background: 'linear-gradient(135deg, #2C1B04 0%, #392306 35%, #49310A 70%, #51330F 100%)',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        {/* New Responsive Hero Section */}
+        <section className="relative min-h-screen md:min-h-auto flex flex-col md:flex-row items-stretch overflow-hidden">
+          {/* Background Image - No Blur */}
+          <div className="w-full md:w-1/2 h-[350px] md:h-auto md:min-h-[650px] relative order-1 md:order-1 rounded-3xl md:rounded-none overflow-hidden">
+            <img src={bgImg} alt="Hyperscoop About Hero" className="w-full h-full object-cover" />
+            {/* Subtle overlay for text readability */}
+            <div className="absolute inset-0 bg-black/5"></div>
           </div>
-          
-          <div className="container mx-auto px-4 md:px-6 relative z-10 text-center pt-8">
-            <motion.h1 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", bounce: 0.5 }}
-              className="text-6xl md:text-7xl lg:text-[5rem] font-['Fredoka'] text-white mb-6 drop-shadow-md"
-            >
-              Our <span className="text-pink-100">Story</span>
-            </motion.h1>
-            
-            {/* Prominent Pull Quote */}
-            <motion.div 
+
+          {/* Content Section */}
+          <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 lg:p-16 bg-white order-2 md:order-2">
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, type: "spring" }}
-              className="max-w-4xl mx-auto relative mt-16 mb-8 bg-white/95 backdrop-blur-md p-10 md:p-14 rounded-[3rem] shadow-2xl shadow-pink-900/20 border-4 border-white/50"
+              className="w-full max-w-md"
             >
-              <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full flex items-center justify-center text-white shadow-xl shadow-pink-500/30">
-                <IceCream size={32} />
+              {/* Quote Card */}
+              <div className="bg-gradient-to-br from-pink-50 to-orange-50 p-8 md:p-10 rounded-[2.5rem] border-2 border-pink-100">
+                <div className="mb-6 flex justify-center md:justify-center">
+                  <div className="w-14 h-14 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full flex items-center justify-center text-white shadow-lg">
+                    <IceCream size={28} />
+                  </div>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-['Fredoka'] text-slate-800 leading-tight mb-4 text-center">
+                  "Share a scoop, <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Share a SMILE.</span>"
+                </h2>
+                <p className="mt-6 text-slate-600 text-base md:text-lg font-medium text-center">We believe that joy is contagious.</p>
               </div>
-              <h2 className="text-4xl md:text-5xl font-['Fredoka'] text-slate-800 leading-tight">
-                "Share a scoop, <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Share a SMILE.</span>"
-              </h2>
-              <p className="mt-6 text-slate-500 text-xl font-medium">We believe that joy is contagious.</p>
             </motion.div>
-          </div>
-
-          {/* Smooth Layered Wave Divider transitioning to white background */}
-          <div className="absolute -bottom-[1px] left-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
-            <svg className="relative block w-full h-[80px] md:h-[150px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-              <path fill="#ffffff" fillOpacity="0.5" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,133.3C672,139,768,213,864,229.3C960,245,1056,203,1152,176C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-              <path fill="#ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,160C1248,139,1344,85,1392,58.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
           </div>
         </section>
 
-        {/* Philosophy Section */}
-        <section className="py-24 bg-white relative">
+        {/* Our Clients Section */}
+        <section className="py-24 bg-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 max-w-7xl mx-auto">
-              
-              {/* Premium 3D Framed Image */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, type: "spring" }}
-                className="w-full lg:w-1/2 relative"
+            <div className="max-w-6xl mx-auto text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-5xl md:text-6xl font-['Fredoka'] text-slate-800 mb-6 leading-tight"
               >
-                {/* 3D Frame Base */}
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-orange-100 rounded-[3rem] transform rotate-3 scale-105 shadow-xl"></div>
-                <div className="absolute inset-0 bg-white rounded-[3rem] transform -rotate-2 scale-105 shadow-lg"></div>
-                
-                <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-white border-4 border-white">
-                  <div className="absolute inset-0 bg-pink-500/10 mix-blend-multiply z-10" />
-                  <motion.img 
-                    style={{ y: yParallax }}
-                    src={aboutImg} 
-                    alt="Hyperscoop Ice Cream" 
-                    className="w-full h-[400px] lg:h-[450px] object-cover scale-105 transform hover:scale-100 transition-transform duration-1000"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-900/30 to-transparent z-20 pointer-events-none" />
-                </div>
-                
-                {/* Vibrant Floating Badge */}
-                <motion.div 
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                  className="absolute -bottom-8 -right-8 md:-right-12 bg-white p-6 rounded-[2rem] shadow-2xl shadow-pink-500/20 border-2 border-pink-50 flex items-center gap-5 z-30"
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-orange-400 text-white rounded-2xl flex items-center justify-center shadow-lg">
-                    <Leaf size={32} />
-                  </div>
-                  <div>
-                    <p className="font-['Fredoka'] text-2xl text-slate-800">100% Natural</p>
-                    <p className="text-md font-bold text-pink-500">Zero Additives</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-              
-              <div className="w-full lg:w-1/2">
-                <motion.h2 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-5xl md:text-6xl font-['Fredoka'] text-slate-800 mb-8 leading-[1.1]"
-                >
-                  Pure ingredients. <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Pure delight.</span>
-                </motion.h2>
-                <p className="text-slate-500 text-xl font-medium mb-12 leading-relaxed">
-                  Made from fresh milk, cane sugar, and handpicked sun-ripe fruit. We strictly use no additives, no preservatives, no artificial colour, or flavouring.
-                </p>
-                
-                {/* Modernized Interactive Chips */}
-                <div className="mb-12">
-                  <h4 className="font-['Fredoka'] text-slate-800 mb-5 text-xl">Fresh Fruits</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {fruits.map((fruit, i) => (
-                      <motion.span 
-                        key={fruit}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.05, type: "spring" }}
-                        whileHover={{ scale: 1.05, y: -4 }}
-                        className="px-5 py-3 bg-pink-50 text-pink-600 font-bold rounded-xl cursor-default hover:bg-pink-500 hover:text-white hover:shadow-lg hover:shadow-pink-500/30 transition-all border border-pink-100"
-                      >
-                        {fruit}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
+                Trusted by Leading Brands Across Industries
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl mx-auto mb-12"
+              >
+                Serving global enterprises, premium hospitality brands, cafés, restaurants and leading retail chains with exceptional quality and consistency.
+              </motion.p>
 
-                <div>
-                  <h4 className="font-['Fredoka'] text-slate-800 mb-5 text-xl">Premium Classics</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {classics.map((classic, i) => (
-                      <motion.span 
-                        key={classic}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.05, type: "spring" }}
-                        whileHover={{ scale: 1.05, y: -4 }}
-                        className="px-5 py-3 bg-orange-50 text-orange-600 font-bold rounded-xl cursor-default hover:bg-orange-400 hover:text-white hover:shadow-lg hover:shadow-orange-400/30 transition-all border border-orange-100"
-                      >
-                        {classic}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
+              <div className="mx-auto w-full max-w-[1100px] px-4 md:px-8">
+                <a
+                  href={clientsImg}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-full overflow-hidden rounded-3xl"
+                  aria-label="Open client logos image"
+                >
+                  <img
+                    src={clientsImg}
+                    alt="Trusted by leading brands across industries"
+                    className="w-full h-auto max-w-[1100px] object-contain mx-auto transition-transform duration-300 ease-out hover:-translate-y-2"
+                    style={{ imageRendering: 'auto' }}
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -186,43 +121,71 @@ const About = () => {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 className="text-5xl md:text-6xl font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Hyperscoop</span> Experience
+              <h2 className="text-5xl md:text-6xl font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm flex items-center justify-center gap-3">
+                The
+                <img src={logoHyper} alt="Hyperscoop mark" className="inline-block h-18 w-auto" />
+                <img src={brandLogo} alt="Hyperscoop logo" className="inline-block h-18 md:h-20 w-auto" />
+                Experience
               </h2>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-              <motion.div 
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-10 max-w-6xl mx-auto">
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="bg-white/80 backdrop-blur-xl p-12 rounded-[3rem] shadow-2xl shadow-pink-500/10 border-2 border-white group"
+                className="bg-white p-10 rounded-[3rem] shadow-2xl shadow-pink-200/40 border border-pink-100"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-orange-400 text-white rounded-[2rem] flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500 rotate-3 group-hover:rotate-6">
-                  <Users size={40} />
+                <div className="flex items-start gap-4 mb-8">
+                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 to-orange-400 text-white shadow-lg">
+                    <Star size={28} />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs uppercase tracking-[0.3em] text-pink-600 font-semibold mb-1">What our customers say</p>
+                    <h3 className="text-3xl font-['Fredoka'] text-slate-900">Rated 4.9 out of 5</h3>
+                    <p className="mt-2 text-slate-500 text-sm leading-relaxed">Loved for our service, freshness, and unforgettable parlour experience.</p>
+                  </div>
                 </div>
-                <h3 className="text-3xl font-['Fredoka'] text-slate-800 mb-4">Guest-First Attitude</h3>
-                <p className="text-slate-500 text-lg font-medium leading-relaxed">
-                  Our counter staff is meticulously trained for service quality, flexibility, and a guest-first attitude. We want every visit to feel warm, welcoming, and personal.
-                </p>
+
+                <div className="space-y-5">
+                  {[
+                    { score: '5.0', label: 'Taste', value: 98 },
+                    { score: '4.9', label: 'Service', value: 96 },
+                    { score: '4.8', label: 'Cleanliness', value: 94 },
+                  ].map((item) => (
+                    <div key={item.label} className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                        <span>{item.label}</span>
+                        <span>{item.score}</span>
+                      </div>
+                      <div className="h-2.5 rounded-full bg-slate-200 overflow-hidden">
+                        <div className="h-full rounded-full bg-gradient-to-r from-pink-500 to-orange-400" style={{ width: `${item.value}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  {[
+                    { title: 'Guest-First Attitude', text: 'Our staff trained for service quality, flexibility, and warmth.' },
+                    { title: 'Creating Memories', text: 'Every visit is about creating happy, unforgettable moments.' },
+                  ].map((review) => (
+                    <div key={review.title} className="rounded-xl border border-pink-100 bg-pink-50 p-4 shadow-sm">
+                      <h4 className="text-sm font-semibold text-slate-900 mb-2">{review.title}</h4>
+                      <p className="text-slate-600 text-xs leading-relaxed">{review.text}</p>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                whileHover={{ y: -10 }}
-                className="bg-white/80 backdrop-blur-xl p-12 rounded-[3rem] shadow-2xl shadow-pink-500/10 border-2 border-white group"
+                transition={{ delay: 0.15 }}
+                className="bg-gradient-to-br from-pink-500 via-fuchsia-500 to-orange-500 p-10 rounded-[3rem] shadow-2xl shadow-pink-500/20 text-white"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-500 text-white rounded-[2rem] flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500 -rotate-3 group-hover:-rotate-6">
-                  <Star size={40} />
-                </div>
-                <h3 className="text-3xl font-['Fredoka'] text-slate-800 mb-4">Creating Memories</h3>
-                <p className="text-slate-500 text-lg font-medium leading-relaxed">
-                  When you walk into a Hyperscoop parlour, you're not just buying ice cream; you're creating a happy memory. Our goal is an outstanding, unforgettable experience.
-                </p>
+                <TestimonialsVerticalFeed />
               </motion.div>
             </div>
           </div>
@@ -239,11 +202,14 @@ const About = () => {
 
           <div className="container mx-auto px-4 md:px-6 relative z-20 pt-10">
             <div className="text-center mb-24">
-              <h2 className="text-5xl md:text-6xl font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm">
-                A Brief <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">History</span> of Ice Cream
+              <h2 className="text-5xl md:text-6xl font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm flex items-center justify-center gap-3">
+                The
+                <img src={logoHyper} alt="Hyperscoop mark" className="inline-block h-18 w-auto" />
+                <img src={brandLogo} alt="Hyperscoop logo" className="inline-block h-18 md:h-20 w-auto" />
+                Journey
               </h2>
               <p className="text-slate-500 max-w-2xl mx-auto text-xl font-medium">
-                Ice cream has a rich history before it became the natural delight we know today.
+                Discover the key moments that shaped Hyperscoop — from our first scoop in Bangalore to the trusted experience customers love today.
               </p>
             </div>
             

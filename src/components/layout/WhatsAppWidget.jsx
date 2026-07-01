@@ -3,8 +3,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const WhatsAppWidget = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const phoneNumber = '919606446504';
-  const message = 'Hello Hyperscoop! I would like to know more about your ice cream.';
+  const phoneNumber = '9899991133';
+  const message = `Hello!! Thank you for reaching out to Hyperscoop Ice Cream. We're happy to have you here.
+
+Please let us know how we can assist you today:
+
+* Product or flavour enquiries
+* Order online
+* Ice cream catering for weddings, corporate events, private celebrations etc..
+* Bulk orders
+* Franchise enquiries
+* Store locations & availability
+* General questions
+
+Share your requirement with us, and our team will respond as soon as possible.
+
+We look forward to serving you.
+
+Warm Regards,
+
+Team Hyperscoop Ice Cream`;
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

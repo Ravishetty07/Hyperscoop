@@ -10,12 +10,32 @@ const Contact = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (data) => {
-    // Placeholder for actual form submission logic (e.g. EmailJS, Formspree)
-    console.log(data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSuccess(true);
-    reset();
-    setTimeout(() => setIsSuccess(false), 5000);
+    try {
+      const to = 'adlabsfoodproducts@gmail.com';
+      const subject = `Website enquiry from ${data.name || 'Visitor'}`;
+      const bodyLines = [
+        `Name: ${data.name || ''}`,
+        `Email: ${data.email || ''}`,
+        `Contact Number: ${data.contactNumber || ''}`,
+        '',
+        'Message:',
+        data.message || ''
+      ];
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+      // Open the user's default mail client with the composed message.
+      window.location.href = mailto;
+
+      // Show success UI and reset form locally (note: actual send depends on user's mail client)
+      setIsSuccess(true);
+      reset();
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (err) {
+      // fallback: still show success state briefly to avoid silent failure
+      console.error('Failed to open mail client', err);
+      setIsSuccess(false);
+    }
   };
 
   return (
@@ -25,7 +45,14 @@ const Contact = () => {
         <meta name="description" content="Reach us for orders. Get in touch with Hyperscoop in Bangalore." />
       </Helmet>
       
-      <main className="font-['Quicksand'] bg-[#fafafa] min-h-screen">
+      <main className="font-['Quicksand'] min-h-screen"
+        style={{
+          background: 'linear-gradient(135deg, #2C1B04 0%, #392306 35%, #49310A 70%, #51330F 100%)',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
         {/* Vibrant Brand Hero Section */}
         <section className="relative pt-32 pb-24 lg:pb-32 overflow-hidden bg-gradient-to-br from-pink-500 to-orange-400">
           <div className="absolute inset-0 z-0">
@@ -93,7 +120,11 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-800 text-xl mb-1">Call Us</h4>
-                      <p className="text-slate-500 font-medium leading-relaxed">+91 9606446504</p>
+                      <p className="text-slate-500 font-medium leading-relaxed">
+                        <a href="tel:9845932734" className="hover:text-orange-500 transition-colors">9845932734</a> / 
+                        <a href="tel:9945191217" className="hover:text-orange-500 transition-colors">9945191217</a> / 
+                        <a href="tel:9899991133" className="hover:text-orange-500 transition-colors">9899991133</a>
+                      </p>
                     </div>
                   </motion.div>
 
@@ -107,9 +138,6 @@ const Contact = () => {
                     </div>
                     <div className="overflow-hidden">
                       <h4 className="font-bold text-slate-800 text-xl mb-1">Email</h4>
-                      <a href="mailto:hyperscooppremium@gmail.com" className="text-slate-500 font-medium leading-relaxed hover:text-pink-500 transition-colors block truncate">
-                        hyperscooppremium@gmail.com
-                      </a>
                       <a href="mailto:adlabsfoodproducts@gmail.com" className="text-slate-500 font-medium leading-relaxed hover:text-orange-500 transition-colors block truncate">
                         adlabsfoodproducts@gmail.com
                       </a>

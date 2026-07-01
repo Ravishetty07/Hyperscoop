@@ -25,7 +25,14 @@ const FindAShoppe = () => {
         <meta name="description" content="Now in your neighborhood. Find a Hyperscoop parlour near you in Bengaluru." />
       </Helmet>
       
-      <main className="font-['Quicksand'] bg-[#fafafa] min-h-screen">
+      <main className="font-['Quicksand'] min-h-screen"
+        style={{
+          background: 'linear-gradient(135deg, #2C1B04 0%, #392306 35%, #49310A 70%, #51330F 100%)',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
         <section className="pt-32 pb-16 bg-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjM2LDcyLDE1MywwLjAzKSIvPjwvc3ZnPg==')] opacity-60"></div>
 

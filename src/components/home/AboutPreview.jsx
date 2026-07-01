@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import aboutImg from '../../assets/images/about/about-hero.jpg';
+import pineappleImg from '../../assets/images/logo/pinapple.jpeg';
 
 const AboutPreview = () => {
   return (
@@ -28,7 +28,7 @@ const AboutPreview = () => {
               <div className="rounded-[1.5rem] overflow-hidden relative">
                 <div className="absolute inset-0 bg-pink-500/10 mix-blend-multiply z-10" />
                 <img 
-                  src={aboutImg} 
+                  src={pineappleImg} 
                   alt="Hyperscoop Ice Cream" 
                   className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                 />
