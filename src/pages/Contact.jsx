@@ -6,38 +6,7 @@ import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import contactImg from '../assets/images/locations/contact-banner.jpg';
 
 const Contact = () => {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const onSubmit = async (data) => {
-    try {
-      const formData = new FormData();
-      formData.append("access_key", "461cc121-5b92-484a-8fb3-afd7f74ea628");
-      formData.append("subject", `Website enquiry from ${data.name || 'Visitor'}`);
-      
-      Object.keys(data).forEach(key => {
-        formData.append(key, data[key]);
-      });
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        setIsSuccess(true);
-        reset();
-        setTimeout(() => setIsSuccess(false), 5000);
-      } else {
-        console.error("Form submission error:", result);
-        setIsSuccess(false);
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setIsSuccess(false);
-    }
-  };
+  // Standard HTML form submission will be used
 
   return (
     <>
@@ -172,48 +141,33 @@ const Contact = () => {
                 <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-pink-500/10 border border-white">
                   <h3 className="text-3xl font-['Fredoka'] text-slate-800 mb-8">Send us a Message</h3>
                   
-                  {isSuccess ? (
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0.9, y: -20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      className="bg-green-50 text-green-700 p-6 rounded-2xl flex items-center mb-8 border border-green-200 shadow-sm"
-                    >
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                        <Send size={20} className="text-green-600" />
-                      </div>
-                      <p className="font-medium">Thank you! Your message has been sent successfully. We will be in touch shortly.</p>
-                    </motion.div>
-                  ) : null}
-
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+                    <input type="hidden" name="access_key" value="461cc121-5b92-484a-8fb3-afd7f74ea628" />
+                    <input type="hidden" name="subject" value="New Contact Enquiry from Hyperscoop Website" />
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2 pl-2">Your Name</label>
                         <input 
                           type="text" 
                           id="name"
-                          className={`w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 ${errors.name ? 'border-red-400 bg-red-50' : 'border-slate-100'} focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400`}
+                          name="name"
+                          required
+                          className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400"
                           placeholder="John Doe"
-                          {...register('name', { required: 'Name is required' })}
                         />
-                        {errors.name && <span className="text-red-500 text-xs font-bold mt-2 pl-2 block">{errors.name.message}</span>}
                       </div>
                       <div>
                         <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2 pl-2">Email Address</label>
                         <input 
                           type="email" 
                           id="email"
-                          className={`w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 ${errors.email ? 'border-red-400 bg-red-50' : 'border-slate-100'} focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400`}
+                          name="email"
+                          required
+                          className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400"
                           placeholder="john@example.com"
-                          {...register('email', { 
-                            required: 'Email is required',
-                            pattern: {
-                              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                              message: "Invalid email address"
-                            }
-                          })}
                         />
-                        {errors.email && <span className="text-red-500 text-xs font-bold mt-2 pl-2 block">{errors.email.message}</span>}
                       </div>
                     </div>
 
@@ -222,44 +176,33 @@ const Contact = () => {
                       <input 
                         type="tel" 
                         id="contactNumber"
-                        className={`w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 ${errors.contactNumber ? 'border-red-400 bg-red-50' : 'border-slate-100'} focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400`}
+                        name="phone"
+                        required
+                        className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400"
                         placeholder="+91 9876543210"
-                        {...register('contactNumber', { required: 'Contact number is required' })}
                       />
-                      {errors.contactNumber && <span className="text-red-500 text-xs font-bold mt-2 pl-2 block">{errors.contactNumber.message}</span>}
                     </div>
 
                     <div>
                       <label htmlFor="message" className="block text-sm font-bold text-slate-700 mb-2 pl-2">Message</label>
                       <textarea 
                         id="message"
+                        name="message"
+                        required
                         rows="5"
-                        className={`w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 ${errors.message ? 'border-red-400 bg-red-50' : 'border-slate-100'} focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400 resize-none`}
+                        className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-2 border-slate-100 focus:bg-white focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100 transition-all font-medium text-slate-700 placeholder-slate-400 resize-none"
                         placeholder="How can we help you?"
-                        {...register('message', { required: 'Message is required' })}
                       ></textarea>
-                      {errors.message && <span className="text-red-500 text-xs font-bold mt-2 pl-2 block">{errors.message.message}</span>}
                     </div>
 
                     <button 
                       type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-pink-500 to-orange-400 text-white font-bold py-5 rounded-2xl hover:from-pink-600 hover:to-orange-500 transition-all disabled:opacity-70 flex items-center justify-center text-lg shadow-xl shadow-pink-500/30 transform hover:-translate-y-1 duration-300"
+                      className="w-full bg-gradient-to-r from-pink-500 to-orange-400 text-white font-bold py-5 rounded-2xl hover:from-pink-600 hover:to-orange-500 transition-all flex items-center justify-center text-lg shadow-xl shadow-pink-500/30 transform hover:-translate-y-1 duration-300"
                     >
-                      {isSubmitting ? (
-                        <span className="flex items-center gap-2">
-                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Sending...
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-2">
-                          Send Message
-                          <Send size={20} />
-                        </span>
-                      )}
+                      <span className="flex items-center gap-2">
+                        Send Message
+                        <Send size={20} />
+                      </span>
                     </button>
                   </form>
                 </div>

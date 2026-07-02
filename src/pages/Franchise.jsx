@@ -6,36 +6,7 @@ import { IndianRupee, Map, Clock, CheckCircle2, Send, Building2, TrendingUp, Use
 import Button from '../components/ui/Button';
 
 const Franchise = () => {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const onSubmit = async (data) => {
-    try {
-      const formData = new FormData();
-      formData.append("access_key", "461cc121-5b92-484a-8fb3-afd7f74ea628");
-      formData.append("subject", "New Franchise Enquiry from Hyperscoop Website");
-      
-      Object.keys(data).forEach(key => {
-        formData.append(key, data[key]);
-      });
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        setIsSuccess(true);
-        reset();
-        setTimeout(() => setIsSuccess(false), 5000);
-      } else {
-        console.error("Form submission error:", result);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
-  };
+  // Standard HTML form submission will be used
 
   const benefits = [
     { title: "Zero Additives", desc: "A clean label brand appealing to the massive health-conscious demographic." },
@@ -188,36 +159,29 @@ const Franchise = () => {
               <p className="text-slate-400">Fill out the form below and our franchise development team will get in touch with you shortly.</p>
             </div>
 
-            {isSuccess ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-500/10 text-green-400 p-6 rounded-2xl flex items-center justify-center mb-6 border border-green-500/20 text-center"
-              >
-                <CheckCircle2 className="mr-3" />
-                Thank you! Your enquiry has been submitted successfully.
-              </motion.div>
-            ) : null}
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+              <input type="hidden" name="access_key" value="461cc121-5b92-484a-8fb3-afd7f74ea628" />
+              <input type="hidden" name="subject" value="New Franchise Enquiry from Hyperscoop Website" />
+              <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
                   <input 
-                    type="text" 
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-900/50 border ${errors.name ? 'border-red-500' : 'border-slate-600'} text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors`}
-                    {...register('name', { required: 'Name is required' })}
+                    type="text"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors"
                   />
-                  {errors.name && <span className="text-red-400 text-xs mt-1 block">{errors.name.message}</span>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
                   <input 
-                    type="tel" 
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-900/50 border ${errors.phone ? 'border-red-500' : 'border-slate-600'} text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors`}
-                    {...register('phone', { required: 'Phone number is required' })}
+                    type="tel"
+                    name="phone"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors"
                   />
-                  {errors.phone && <span className="text-red-400 text-xs mt-1 block">{errors.phone.message}</span>}
                 </div>
               </div>
 
@@ -226,39 +190,38 @@ const Franchise = () => {
                   <label className="block text-sm font-medium text-slate-300 mb-2">City of Interest</label>
                   <input 
                     type="text" 
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-900/50 border ${errors.city ? 'border-red-500' : 'border-slate-600'} text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors`}
-                    {...register('city', { required: 'City is required' })}
+                    name="city"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors"
                   />
-                  {errors.city && <span className="text-red-400 text-xs mt-1 block">{errors.city.message}</span>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Target Location</label>
                   <input 
                     type="text" 
-                    className={`w-full px-4 py-3 rounded-xl bg-slate-900/50 border ${errors.location ? 'border-red-500' : 'border-slate-600'} text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors`}
+                    name="location"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors"
                     placeholder="Area, mall, or neighbourhood"
-                    {...register('location', { required: 'Target location is required' })}
                   />
-                  {errors.location && <span className="text-red-400 text-xs mt-1 block">{errors.location.message}</span>}
                 </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">Message or Comments (Optional)</label>
                 <textarea 
+                  name="message"
                   rows="3"
                   className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition-colors resize-none"
-                  {...register('message')}
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-pink-500 text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition-colors disabled:opacity-70 flex items-center justify-center shadow-lg shadow-pink-500/20"
+                className="w-full bg-pink-500 text-white font-bold py-4 rounded-xl hover:bg-pink-600 transition-colors flex items-center justify-center shadow-lg shadow-pink-500/20"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
-                {!isSubmitting && <Send className="ml-2" size={18} />}
+                Submit Enquiry
+                <Send className="ml-2" size={18} />
               </button>
             </form>
           </div>
