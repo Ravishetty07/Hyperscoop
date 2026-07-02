@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/seo/SEO';
 import { flavours } from '../data/flavours';
 import FlavourCard from '../components/flavours/FlavourCard';
 import ImageLightbox from '../components/ImageLightbox';
@@ -26,10 +26,25 @@ const Flavours = () => {
 
   return (
     <>
-      <Helmet>
-        <title>All Flavours | Hyperscoop</title>
-        <meta name="description" content="Explore all our delicious ice cream flavours." />
-      </Helmet>
+      <SEO 
+        title="All Flavours | Hyperscoop - Premium Vegetarian Ice Cream"
+        description="Explore our delicious range of 100% natural, vegetarian ice cream flavours. From classic Vanilla to exotic fruits, find your perfect scoop in Bangalore."
+        canonicalUrl="https://www.hyperscoop.in/flavours"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.hyperscoop.in/"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Flavours"
+          }]
+        }}
+      />
       
       <main className="font-['Quicksand'] min-h-screen"
         style={{
@@ -44,7 +59,7 @@ const Flavours = () => {
           
           <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
             <h1 className="text-6xl md:text-7xl lg:text-[5rem] font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm">
-              All <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Flavours</span>
+              <span className="sr-only">Natural Ice Cream </span>All <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Flavours</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
               Discover our carefully crafted, 100% vegetarian ice creams made with fresh, handpicked ingredients.

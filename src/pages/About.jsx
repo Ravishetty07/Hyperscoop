@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/seo/SEO';
 import { motion } from 'framer-motion';
 import { IceCream, Leaf, Users, Star } from 'lucide-react';
 import bgImg from '../assets/images/about/bg images.jpeg';
@@ -20,10 +20,25 @@ const timelineEvents = [
 const About = () => {
   return (
     <>
-      <Helmet>
-        <title>About Us | Hyperscoop</title>
-        <meta name="description" content="Share a scoop, Share a SMILE with our 100% natural, additive-free ice cream." />
-      </Helmet>
+      <SEO 
+        title="About Us | Hyperscoop - 100% Natural Ice Cream"
+        description="Learn about Hyperscoop's journey, from our first scoop in Bangalore to serving natural, vegetarian ice cream to leading brands and families."
+        canonicalUrl="https://www.hyperscoop.in/about"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.hyperscoop.in/"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About Us"
+          }]
+        }}
+      />
       
       <main className="font-['Quicksand'] min-h-screen"
         style={{
@@ -57,9 +72,10 @@ const About = () => {
                     <IceCream size={28} />
                   </div>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-['Fredoka'] text-slate-800 leading-tight mb-4 text-center">
+                <h1 className="text-3xl md:text-4xl font-['Fredoka'] text-slate-800 leading-tight mb-4 text-center">
+                  <span className="sr-only">About Hyperscoop - Natural Ice Cream in Bangalore</span>
                   "Share a scoop, <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Share a SMILE.</span>"
-                </h2>
+                </h1>
                 <p className="mt-6 text-slate-600 text-base md:text-lg font-medium text-center">We believe that joy is contagious.</p>
               </div>
             </motion.div>

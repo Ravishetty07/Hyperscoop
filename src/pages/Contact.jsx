@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/seo/SEO';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
@@ -11,39 +11,55 @@ const Contact = () => {
 
   const onSubmit = async (data) => {
     try {
-      const to = 'adlabsfoodproducts@gmail.com';
-      const subject = `Website enquiry from ${data.name || 'Visitor'}`;
-      const bodyLines = [
-        `Name: ${data.name || ''}`,
-        `Email: ${data.email || ''}`,
-        `Contact Number: ${data.contactNumber || ''}`,
-        '',
-        'Message:',
-        data.message || ''
-      ];
-      const body = encodeURIComponent(bodyLines.join('\n'));
-      const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      const formData = new FormData();
+      formData.append("access_key", "461cc121-5b92-484a-8fb3-afd7f74ea628");
+      formData.append("subject", `Website enquiry from ${data.name || 'Visitor'}`);
+      
+      Object.keys(data).forEach(key => {
+        formData.append(key, data[key]);
+      });
 
-      // Open the user's default mail client with the composed message.
-      window.location.href = mailto;
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
 
-      // Show success UI and reset form locally (note: actual send depends on user's mail client)
-      setIsSuccess(true);
-      reset();
-      setTimeout(() => setIsSuccess(false), 5000);
-    } catch (err) {
-      // fallback: still show success state briefly to avoid silent failure
-      console.error('Failed to open mail client', err);
+      const result = await response.json();
+      if (result.success) {
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        console.error("Form submission error:", result);
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
       setIsSuccess(false);
     }
   };
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us | Hyperscoop</title>
-        <meta name="description" content="Reach us for orders. Get in touch with Hyperscoop in Bangalore." />
-      </Helmet>
+      <SEO 
+        title="Contact Us | Hyperscoop - Ice Cream Catering Bangalore"
+        description="Reach us for bulk orders, dessert catering in Bangalore, or general enquiries. Get in touch with Hyperscoop."
+        canonicalUrl="https://www.hyperscoop.in/contact"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.hyperscoop.in/"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact Us"
+          }]
+        }}
+      />
       
       <main className="font-['Quicksand'] min-h-screen"
         style={{
@@ -66,6 +82,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-6xl md:text-7xl font-['Fredoka'] mb-6 drop-shadow-md"
             >
+              <span className="sr-only">Contact Hyperscoop - Ice Cream Catering and Orders Bangalore </span>
               Get in <span className="text-pink-100">Touch</span>
             </motion.h1>
             <motion.p 

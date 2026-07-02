@@ -86,6 +86,7 @@ const Hero = () => {
           </motion.span>
           
           <motion.h1 variants={itemVariants} className="font-['Playfair_Display'] text-5xl md:text-6xl lg:text-[5.5rem] text-[#2d1b2e] leading-[1.1] font-extrabold mb-6">
+            <span className="sr-only">100% Natural and Vegetarian Ice Cream in Bangalore</span>
             Scoop into <br/>
             <span className="italic font-normal text-[#dca120]">Pure Happiness</span>
           </motion.h1>

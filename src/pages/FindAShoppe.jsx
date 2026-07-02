@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/seo/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPinOff } from 'lucide-react';
 import { stores } from '../data/stores';
@@ -20,10 +20,25 @@ const FindAShoppe = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Find a Shoppe | Hyperscoop</title>
-        <meta name="description" content="Now in your neighborhood. Find a Hyperscoop parlour near you in Bengaluru." />
-      </Helmet>
+      <SEO 
+        title="Find a Shoppe | Best Ice Cream Shop Bangalore | Ice Cream Near Me"
+        description="Looking for ice cream near me? Find the closest Hyperscoop parlour in Bangalore and enjoy our 100% natural, vegetarian ice cream."
+        canonicalUrl="https://www.hyperscoop.in/shoppe"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.hyperscoop.in/"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Find a Shoppe"
+          }]
+        }}
+      />
       
       <main className="font-['Quicksand'] min-h-screen"
         style={{
@@ -42,6 +57,7 @@ const FindAShoppe = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-6xl md:text-7xl lg:text-[5rem] font-['Fredoka'] text-slate-800 mb-6 drop-shadow-sm"
             >
+              <span className="sr-only">Best Ice Cream Shop Bangalore - Ice Cream Near Me </span>
               Find a <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Shoppe</span>
             </motion.h1>
             <motion.p 

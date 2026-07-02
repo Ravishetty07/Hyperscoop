@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/seo/SEO';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { IndianRupee, Map, Clock, CheckCircle2, Send, Building2, TrendingUp, Users } from 'lucide-react';
@@ -10,11 +10,31 @@ const Franchise = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (data) => {
-    console.log("Franchise Enquiry:", data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSuccess(true);
-    reset();
-    setTimeout(() => setIsSuccess(false), 5000);
+    try {
+      const formData = new FormData();
+      formData.append("access_key", "461cc121-5b92-484a-8fb3-afd7f74ea628");
+      formData.append("subject", "New Franchise Enquiry from Hyperscoop Website");
+      
+      Object.keys(data).forEach(key => {
+        formData.append(key, data[key]);
+      });
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        console.error("Form submission error:", result);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   const benefits = [
@@ -26,10 +46,25 @@ const Franchise = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Franchise Opportunities | Hyperscoop</title>
-        <meta name="description" content="Partner with Hyperscoop and start your own natural ice cream parlour." />
-      </Helmet>
+      <SEO 
+        title="Ice Cream Franchise India | Partner with Hyperscoop"
+        description="Partner with Hyperscoop, a rapidly growing 100% natural, vegetarian ice cream brand. Start your own premium ice cream parlour and build a sweet future."
+        canonicalUrl="https://www.hyperscoop.in/franchise"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.hyperscoop.in/"
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Franchise"
+          }]
+        }}
+      />
       
       <main className="font-['Quicksand'] min-h-screen"
         style={{
@@ -49,6 +84,7 @@ const Franchise = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl md:text-6xl font-extrabold text-slate-800 mb-6"
             >
+              <span className="sr-only">Ice Cream Franchise India - Partner with Hyperscoop </span>
               Build a <span className="text-pink-500">Sweet</span> Future
             </motion.h1>
             <motion.p 
